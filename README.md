@@ -1,2 +1,3 @@
-# bsql
-NLSQL for business intelligence
+# BSQL: NLSQL for Business Intelligence
+
+
