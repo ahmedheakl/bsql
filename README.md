@@ -1,3 +1,1 @@
-# BSQL: NLSQL for Business Intelligence
-
-
+# LLM-BI

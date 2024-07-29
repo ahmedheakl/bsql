@@ -1,0 +1,9 @@
+MODEL_NAME_D2V: 'deepseek-ai/deepseek-coder-6.7b-instruct'
+# 'teknium/OpenHermes-2.5-Mistral-7B'
+MODEL_BIN_DIR_D2V: 'models'
+MAX_NEW_TOKENS_D2V: 512
+TEMPERATURE_D2V: 0.6
+DEVICE_D2V: 'gpu'
+# MAX_NEW_TOKENS_T2SQL: 512
+# TEMPERATURE_T2SQL: 0.6
+# DEVICE_T2SQL: 'gpu'

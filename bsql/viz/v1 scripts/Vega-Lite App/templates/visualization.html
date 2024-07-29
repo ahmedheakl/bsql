@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vega-Lite Data Visualization</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <style>
+        hr, h3 { padding-bottom: 20px; }
+        canvas { background-color: #fffff; }
+        .waterfall { width: 1200px; height: 300px; overflow-x: auto; overflow-y: auto; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li><a href="/">Home page</a></li>
+        </ul>
+        <h3 class="text-muted">Vega-Lite Data Visualization</h3>
+    </div>
+
+    <div class="charts text-center">
+        <h1>Data Graph</h1>
+        <div class="row">
+            <div id="vis"></div>
+        </div>
+        <hr>
+        <!-- Placeholder for the tooltip -->
+        <div id="vis-tooltip" class="vg-tooltip"></div>
+    </div>
+</div>
+
+<!-- Render Charts -->
+<script src="https://cdn.jsdelivr.net/npm/vega@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@3.0.0-rc12"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+<script src="https://vega.github.io/datalib/datalib.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-tooltip@0.16.0/build/vega-tooltip.min.js"></script>
+
+<script type="text/javascript">
+  function parseVegaLiteSpec(vega_lite_spec, div) {
+      var opt = {
+          mode: "vega-lite",
+          renderer: "svg",
+          actions: { export: true, source: false, editor: false }
+      };
+
+      vegaEmbed("#" + div, vega_lite_spec, opt, function(error, result) {
+          if (error) {
+              console.error('Error embedding Vega-Lite:', error);
+          } else {
+              // Enable tooltip on hover
+              result.view.tooltip(new vegaTooltip.Handler().call);
+
+              // Enable zooming and panning
+              result.view
+                  .runAsync()
+                  .then(function() {
+                      return result.view.insert('zoom');
+                  });
+          }
+      });
+  }
+
+  // Get the Vega-Lite specification from the Flask template variable
+  var vega_lite_spec = {{ vega_lite_spec | safe }};
+
+  // Call the parse function with the retrieved Vega-Lite specification
+  parseVegaLiteSpec(vega_lite_spec, "vis");
+</script>
+
+</body>
+</html>
