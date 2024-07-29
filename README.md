@@ -13,6 +13,9 @@ This Business SQL Analysis Tool is a powerful, AI-driven application designed to
 - **Dynamic Follow-up Questions**: Generates relevant follow-up questions using the Llama 2 model to encourage deeper data exploration.
 - **Interactive User Interface**: Built with Streamlit for a seamless and user-friendly experience.
 
+## Architecture 
+![WhatsApp Image 2024-07-29 at 3 19 14 PM](https://github.com/user-attachments/assets/f76b6d68-1fbf-4854-a00b-702fc19fa398)
+
 ## Tech Stack
 
 - **Frontend**: Streamlit
